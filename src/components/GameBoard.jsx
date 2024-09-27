@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const initialGameBoard = [
   [null, null, null],
@@ -6,18 +6,17 @@ const initialGameBoard = [
   [null, null, null],
 ];
 
-const GameBoard = () => {
-  const [gameBoard, setGameBoard] = React.useState(initialGameBoard);
-
-
+const GameBoard = ({ setActivePlayer ,activePlayer}) => {
+  const [gameBoard, setGameBoard] = useState(initialGameBoard);
   function handleSelectSquare(rowIndex, colIndex) {
     setGameBoard((prevGameBoard) => {
       const updatedBoard = [
         ...prevGameBoard.map((innerArray) => [...innerArray]),
       ];
-      updatedBoard[rowIndex][colIndex] = "X";
+      updatedBoard[rowIndex][colIndex] = activePlayer;
       return updatedBoard;
     });
+    setActivePlayer();
   }
 
   return (
