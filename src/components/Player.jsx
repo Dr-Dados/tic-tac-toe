@@ -10,9 +10,6 @@ const Player = ({ name, symbol,activePlayer }) => {
   function editHandler() {
     setIsEditing((editing) => !editing);
   }
-
-  console.log(activePlayer === symbol)
-
   return (
     <li className={`${activePlayer === symbol && "active"}`}>
       <span className={`player`}>
