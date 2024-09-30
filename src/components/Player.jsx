@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Player = ({ name, symbol,activePlayer }) => {
+const Player = ({ name, symbol, activePlayer, onChangeName }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [playerName, setPlayerName] = useState(name);
 
@@ -9,6 +9,9 @@ const Player = ({ name, symbol,activePlayer }) => {
   }
   function editHandler() {
     setIsEditing((editing) => !editing);
+    if (isEditing) {
+      onChangeName(symbol, playerName);
+    }
   }
   return (
     <li className={`${activePlayer === symbol && "active"}`}>
